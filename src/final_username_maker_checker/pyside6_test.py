@@ -23,9 +23,10 @@ class MainWindow(QMainWindow):
 
         layout = QVBoxLayout()
         title_label = QLabel("Enter a premade username if you have one:")
+        explanatory_sentence = QLabel("This app is for generating usernames and checking to see if theyve been created already or not.")
 
         
-        self.name_input = QLineEdit(placeholderText="already made username")
+        self.name_input = QLineEdit(placeholderText="Type premade username here: ")
         # TODO: add a push button to greet user
         submit_button = QPushButton("greet me!")
         submit_button.clicked.connect(self.get_input)
@@ -36,15 +37,9 @@ class MainWindow(QMainWindow):
         submit_button_job = QPushButton("job!!")
         submit_button_job.clicked.connect(self.job_input)
 
-        """
-        Challenges:
-            * Add another text input (last name, home town, etc.)
-            * Add a clear button that, when clicked will
-                - clear the text in the name input
-                - reset the output text to its initial value
-        """
-
+       
         # add widgets & layouts to main layout
+        layout.addWidget(explanatory_sentence)
         layout.addWidget(title_label)
         layout.addWidget(self.name_input)
         layout.addWidget(submit_button)
@@ -67,7 +62,7 @@ class MainWindow(QMainWindow):
             output = "friend" + "Give a real name next time, you didn't this time!" 
             output += "your name is empty!"
         else:
-            output = f"you entered: {name} as your name." 
+            output = f"You've entered: {name} as your username." 
         self.output_label.setText(output)
 
     def job_input(self):
