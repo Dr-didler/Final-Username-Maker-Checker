@@ -31,31 +31,34 @@ class MainWindow(QMainWindow):
         submit_button = QPushButton("greet me!")
         submit_button.clicked.connect(self.get_input)
         # TODO: add a label to greet user
+        submit_button_job = QPushButton("username")
+        submit_button_data = QPushButton("Your name")
+        submit_button_job.clicked.connect(self.job_input, self.name_data)
+
         
+       
+
+
         self.instructions = "Enter your name and click the button, then, enter your job in the box to the right."
         self.output_label = QLabel(self.instructions)
         self.job_inputs = QLineEdit(placeholderText="enter your first name")
         self.name_datas = QLineEdit(placeholderText= "Type your name here...")
+       
         
-        submit_button_job = QPushButton("username")
-        submit_button_job.clicked.connect(self.job_input)
-
-        submit_button_data = QPushButton("Your name")
-        submit_button_data.clicked.connect(self.name_data)
-        
-        # add widgets & layouts to main layout
         layout.addWidget(explanatory_sentence)
         layout.addWidget(title_label)
         layout.addWidget(self.name_input)
         layout.addWidget(submit_button)
         layout.addWidget(self.output_label)
-        hbox.addWidget(self.name_datas) 
-        hbox.addWidget(submit_button_data)
-        hbox.addWidget(self.job_inputs)
-        hbox.addWidget(submit_button_job)
-        # [OPTIONAL] Add a stretch to move everything up
+        layout.addWidget(self.name_datas) 
+        layout.addWidget(submit_button_data)
+        layout.addWidget(self.job_inputs)
+        layout.addWidget(submit_button_job)
+        
+        
         layout.addStretch()
-
+    
+#setsize - .setsize -for changing the size to make the boxes small 
         widget = QWidget()
         widget.setLayout(layout)
         widget.setLayout(hbox)
@@ -66,7 +69,7 @@ class MainWindow(QMainWindow):
 
     def get_input(self):
         output = "Hello, "
-        name = self.get_input.text()
+        name = self.name_input.text()
         if not name:
             output = "friend" + "Give a real name next time, you didn't this time!" 
             output += "your name is empty!"
@@ -93,7 +96,10 @@ class MainWindow(QMainWindow):
         else:
             output = f"you entered, {job} as your job"
         self.output_label.setText(output)
-           
+    
+    def generated_user(self):
+        output = self.job_inputs + self.name_datas
+        return output
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
