@@ -32,7 +32,6 @@ class MainWindow(QMainWindow):
         submit_button.clicked.connect(self.get_input)
         # TODO: add a label to greet user
         submit_button_job = QPushButton("username")
-        submit_button_data = QPushButton("Your name")
         submit_button_job.clicked.connect(self.job_input, self.name_data)
 
         
@@ -41,8 +40,8 @@ class MainWindow(QMainWindow):
 
         self.instructions = "Enter your name and click the button, then, enter your job in the box to the right."
         self.output_label = QLabel(self.instructions)
-        self.job_inputs = QLineEdit(placeholderText="enter your first name")
-        self.name_datas = QLineEdit(placeholderText= "Type your name here...")
+        self.job_inputs = QLineEdit(placeholderText="Enter your first name")
+        self.name_datas = QLineEdit(placeholderText= "Type your job here...")
        
         
         layout.addWidget(explanatory_sentence)
@@ -51,7 +50,6 @@ class MainWindow(QMainWindow):
         layout.addWidget(submit_button)
         layout.addWidget(self.output_label)
         layout.addWidget(self.name_datas) 
-        layout.addWidget(submit_button_data)
         layout.addWidget(self.job_inputs)
         layout.addWidget(submit_button_job)
         
@@ -84,22 +82,19 @@ class MainWindow(QMainWindow):
            output = f"g"
            output  += "n"
         else:
-            output = f"you entered, {name_d} as your job"
+            output = f"your username is, {name_d}"
         self.output_label.setText(output)
     
     def job_input(self):
         output = "Hello, "
-        job = self.job_inputs.text()
+        job = self.job_inputs.text() 
         if not job:
-           output = f"g"
-           output  += "n"
+           output = f"No username was entered."
         else:
-            output = f"you entered, {job} as your job"
+            output = f"you entered, {job} as your job."
         self.output_label.setText(output)
     
-    def generated_user(self):
-        output = self.job_inputs + self.name_datas
-        return output
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
