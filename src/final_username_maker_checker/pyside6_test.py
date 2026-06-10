@@ -53,7 +53,10 @@ class MainWindow(QMainWindow):
         layout.addWidget(self.job_inputs)
         layout.addWidget(submit_button_job)
         
+        self.setStyleSheet("font-family: 'Courier'; font-size: 16px; font-weight: bold;")
         
+
+
         layout.addStretch()
     
 #setsize - .setsize -for changing the size to make the boxes small 
@@ -83,7 +86,7 @@ class MainWindow(QMainWindow):
            output = f"g"
            output  += "n"
         else:
-            output = f"your username is, {name_d + job + len(job) + len(name_d)}"
+            output = f"your username is, {name_d}"
         self.output_label.setText(output)
         
     def job_input(self):
@@ -93,11 +96,8 @@ class MainWindow(QMainWindow):
         if not job:
            output = f"No username was entered."
         else:
-            output = f"you entered, {name_d + job + len(job) + len(name_d)} as your job."
+            output = f"you entered, {name_d}{job}{len(job)} as your username."
         self.output_label.setText(output)
-
-   
-    
 
 
 if __name__ == "__main__":
