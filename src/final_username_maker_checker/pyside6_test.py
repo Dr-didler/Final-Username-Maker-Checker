@@ -74,25 +74,29 @@ class MainWindow(QMainWindow):
         else:
             output = f"You've entered: {name} as your username." 
         self.output_label.setText(output)
-
+ 
     def name_data(self):
         output = "Hello, "
         name_d = self.name_datas.text()
+        job = self.job_inputs.text()
         if not name_d:
            output = f"g"
            output  += "n"
         else:
-            output = f"your username is, {name_d}"
+            output = f"your username is, {name_d + job + len(job) + len(name_d)}"
         self.output_label.setText(output)
-    
+        
     def job_input(self):
         output = "Hello, "
         job = self.job_inputs.text() 
+        name_d = self.name_datas.text()
         if not job:
            output = f"No username was entered."
         else:
-            output = f"you entered, {job} as your job."
+            output = f"you entered, {name_d + job + len(job) + len(name_d)} as your job."
         self.output_label.setText(output)
+
+   
     
 
 
